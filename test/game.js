@@ -1,6 +1,7 @@
 import { expect } from 'chai'
 import Game from '../src/Game'
 
+const userMoveSymbol = 'x'
 const initialGameBoard = [
   ['', '', ''],
   ['', '', ''],
@@ -23,6 +24,6 @@ describe('Game', () => {
     game.acceptUserMove(x, y)
     const board = game.getState()
 
-    expect(board[x][y]).to.equal('x')
+    expect(board[x][y]).to.equal(userMoveSymbol)
   })
 })

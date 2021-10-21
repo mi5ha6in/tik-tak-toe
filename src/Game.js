@@ -1,5 +1,6 @@
 export default class Game {
   constructor() {
+    this._userMoveSymbol = 'x'
     this._board = [
       ['', '', ''],
       ['', '', ''],
@@ -12,6 +13,10 @@ export default class Game {
   }
 
   acceptUserMove(x, y) {
-    this._board[0][0] = 'x'
+    this._updateBoard(0, 0)
+  }
+
+  _updateBoard(x, y) {
+    this._board[x][y] = this._userMoveSymbol
   }
 }
