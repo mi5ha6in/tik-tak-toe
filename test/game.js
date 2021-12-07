@@ -35,4 +35,11 @@ describe('Game', () => {
 
     expect(func).to.throw('cell is already taken')
   })
+
+  it('Computer moves in top left cell', () => {
+    game.createComputerMove()
+    const board = game.getState()
+
+    expect(board[0][0]).to.equal('o')
+  })
 })
