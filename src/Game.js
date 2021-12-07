@@ -24,4 +24,8 @@ export default class Game {
   _updateBoard(x, y) {
     this._board[x][y] = this._userMoveSymbol
   }
+
+  createComputerMove() {
+    this._board[0][0] = 'o'
+  }
 }
