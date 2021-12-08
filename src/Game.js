@@ -39,4 +39,8 @@ export default class Game {
   _throwException(message) {
     throw new Error(message)
   }
+
+  getMoveHistory() {
+    return [{turn: 'user', x: 1, y: 1}]
+  }
 }
