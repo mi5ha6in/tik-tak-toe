@@ -2,6 +2,7 @@ export default class Game {
   constructor() {
     this._userMoveSymbol = 'x'
     this._computerMoveSymbol = 'o'
+    this._history = [{turn: 'user', x: 1, y: 1}]
     this._board = [
       ['', '', ''],
       ['', '', ''],
@@ -41,6 +42,6 @@ export default class Game {
   }
 
   getMoveHistory() {
-    return [{turn: 'user', x: 1, y: 1}]
+    return this._history
   }
 }
