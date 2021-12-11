@@ -52,4 +52,13 @@ describe('Game', () => {
 
     expect(history).to.deep.equal([{turn: userName, x, y}])
   })
+
+  it('Game save computers\'s move in history', () => {
+    game.createComputerMove()
+    const history = game.getMoveHistory()
+
+    expect(history).to.deep.equal([{turn: 'computer', x: 0, y: 0}])
+  })
+
+
 })
