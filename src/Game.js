@@ -2,7 +2,7 @@ export default class Game {
   constructor() {
     this._userMoveSymbol = 'x'
     this._computerMoveSymbol = 'o'
-    this._history = [{turn: 'user', x: 1, y: 1}]
+    this._history = []
     this._board = [
       ['', '', ''],
       ['', '', ''],
@@ -18,7 +18,8 @@ export default class Game {
     if (!this._isCellFree(x, y)) {
       return this._throwException('cell is already taken')
     }
-
+    
+    this._history.push({turn: 'user', x, y})
     this._updateBoard(x, y)
   }
 
@@ -28,6 +29,7 @@ export default class Game {
   }
 
   createComputerMove() {
+    this._history.push({turn: 'computer', x: 0, y: 0})
     this._updateBoard(0, 0, {
       symbol: this._computerMoveSymbol
     })
