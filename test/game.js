@@ -1,65 +1,79 @@
-import { expect } from 'chai'
-import Game from '../src/Game'
+import { expect } from "chai";
+import Game from "../src/Game";
 
-const computerName = 'computer'
-const userName = 'user'
-const userMoveSymbol = 'x'
+const computerName = "computer";
+const userName = "user";
+const userMoveSymbol = "x";
 const initialGameBoard = [
-  ['', '', ''],
-  ['', '', ''],
-  ['', '', '']
-]
+  ["", "", ""],
+  ["", "", ""],
+  ["", "", ""],
+];
 
-let game
-beforeEach(() => game = new Game())
+let game;
+beforeEach(() => (game = new Game()));
 
-describe('Game', () => {
-  it('Should return empty game board', () => {
-    const board = game.getState()
+describe("Game", () => {
+  it("Should return empty game board", () => {
+    const board = game.getState();
 
-    expect(board).to.deep.equal(initialGameBoard)
-  })
+    expect(board).to.deep.equal(initialGameBoard);
+  });
 
-  it('Write user\'s symbol in cell with given coordinates', () => {
-    const x = 1, y = 1;
+  it("Write user's symbol in cell with given coordinates", () => {
+    const x = 1,
+      y = 1;
 
-    game.acceptUserMove(x, y)
-    const board = game.getState()
+    game.acceptUserMove(x, y);
+    const board = game.getState();
 
-    expect(board[x][y]).to.equal(userMoveSymbol)
-  })
+    expect(board[x][y]).to.equal(userMoveSymbol);
+  });
 
-  it('Throw an exception if user moves in taken cell', () => {
-    const x = 2, y = 2
-    
-    game.acceptUserMove(x, y)
-    const func = game.acceptUserMove.bind(game, x, y)
+  it("Throw an exception if user moves in taken cell", () => {
+    const x = 2,
+      y = 2;
 
-    expect(func).to.throw('cell is already taken')
-  })
+    game.acceptUserMove(x, y);
+    const func = game.acceptUserMove.bind(game, x, y);
 
-  it('Computer moves in top left cell', () => {
-    game.createComputerMove()
-    const board = game.getState()
+    expect(func).to.throw("cell is already taken");
+  });
 
-    expect(board[0][0]).to.equal('o')
-  })
+  it("Computer moves in top left cell", () => {
+    game.createComputerMove();
+    const board = game.getState();
 
-  it('Game saves user\'s move in history', () => {
-    const x = 1, y = 1
+    expect(board[0][0]).to.equal("o");
+  });
 
-    game.acceptUserMove(x, y)
-    const history = game.getMoveHistory()
+  it("Game saves user's move in history", () => {
+    const x = 1,
+      y = 1;
 
-    expect(history).to.deep.equal([{turn: userName, x, y}])
-  })
+    game.acceptUserMove(x, y);
+    const history = game.getMoveHistory();
 
-  it('Game save computers\'s move in history', () => {
-    game.createComputerMove()
-    const history = game.getMoveHistory()
+    expect(history).to.deep.equal([{ turn: userName, x, y }]);
+  });
 
-    expect(history).to.deep.equal([{turn: computerName, x: 0, y: 0}])
-  })
+  it("Game save computers's move in history", () => {
+    game.createComputerMove();
+    const history = game.getMoveHistory();
 
+    expect(history).to.deep.equal([{ turn: computerName, x: 0, y: 0 }]);
+  });
 
-})
+  it("Game save 1 user's move and 1 computer's move in history", () => {
+    const x = 1,
+      y = 1;
+
+    game.acceptUserMove(x, y);
+    game.createComputerMove();
+    const history = game.getMoveHistory();
+
+    expect(history.length).to.equal(2);
+    expect(history[0].turn).to.equal(userName);
+    expect(history[1].turn).to.equal(computerName);
+  });
+});
