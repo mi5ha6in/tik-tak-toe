@@ -72,8 +72,8 @@ describe("Game", () => {
     game.createComputerMove();
     const history = game.getMoveHistory();
 
-    expect(history.length).to.equal(2);
-    expect(history[0].turn).to.equal(userName);
-    expect(history[1].turn).to.equal(computerName);
+    expect(history.length).to.equal(2)
+    expect(history[0].turn).to.equal(userName)
+    expect(history[0].turn).to.equal(computerName)
   });
 });
