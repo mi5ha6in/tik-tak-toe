@@ -76,4 +76,17 @@ describe("Game", () => {
     expect(history[0].turn).to.equal(userName)
     expect(history[0].turn).to.equal(computerName)
   });
+
+  it("Computer move in randomly chosen cell", () => {
+    const userMoveSymbol = "x"
+    const computerMoveSymbol = "o"
+
+    const stub = sinon.stub(Math, 'random').returnValues(0.5)
+
+    game.createComputerMove()
+    const board = game.getState()
+
+    expect(board[1][1]).to.equal(computerMoveSymbol)
+    stub.restore()
+  })
 });
