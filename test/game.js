@@ -41,13 +41,6 @@ describe("Game", () => {
     expect(func).to.throw("cell is already taken");
   });
 
-  it("Computer moves in top left cell", () => {
-    game.createComputerMove();
-    const board = game.getState();
-
-    expect(board[0][0]).to.equal("o");
-  });
-
   it("Game saves user's move in history", () => {
     const x = 1,
       y = 1;
