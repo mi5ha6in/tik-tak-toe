@@ -82,7 +82,7 @@ describe("Game", () => {
     const userMoveSymbol = "x";
     const computerMoveSymbol = "o";
 
-    const stub = sinon.stub(Math, "random").returnValues(0.5);
+    const stub = sinon.stub(Math, "random").returns(0.5);
 
     game.createComputerMove();
     const board = game.getState();

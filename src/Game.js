@@ -31,8 +31,10 @@ export default class Game {
   }
 
   createComputerMove() {
-    this._updateHistory(this._computerName, 0, 0)
-    this._updateBoard(0, 0, {
+    const x = Math.floor(Math.random() * (3 - 0))
+    const y = Math.floor(Math.random() * (3 - 0))
+    this._updateHistory(this._computerName, x, y)
+    this._updateBoard(x, y, {
       symbol: this._computerMoveSymbol
     })
   }
