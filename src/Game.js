@@ -4,6 +4,7 @@ export default class Game {
     this._computerName = 'computer'
     this._userMoveSymbol = 'x'
     this._computerMoveSymbol = 'o'
+    this._fieldSize = 3
     this._history = []
     this._board = [
       ['', '', ''],
@@ -31,12 +32,17 @@ export default class Game {
   }
 
   createComputerMove() {
-    const x = Math.floor(Math.random() * (3 - 0))
-    const y = Math.floor(Math.random() * (3 - 0))
+    const x = this._getRandomCoordinate()
+    const y = this._getRandomCoordinate()
     this._updateHistory(this._computerName, x, y)
     this._updateBoard(x, y, {
       symbol: this._computerMoveSymbol
     })
+
+  }
+
+  _getRandomCoordinate() {
+    return Math.floor(Math.random() * (this._fieldSize -  0))
   }
 
   _isCellFree(x, y) {
