@@ -74,7 +74,7 @@ describe("Game", () => {
 
     expect(history.length).to.equal(2)
     expect(history[0].turn).to.equal(userName)
-    expect(history[0].turn).to.equal(computerName)
+    expect(history[1].turn).to.equal(computerName)
   });
 
   it("Computer move in randomly chosen cell", () => {
