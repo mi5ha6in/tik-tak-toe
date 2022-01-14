@@ -52,10 +52,13 @@ describe("Game", () => {
   });
 
   it("Game save computers's move in history", () => {
+    const stub = sinon.stub(Math, "random").returns(0.5);
+
     game.createComputerMove();
     const history = game.getMoveHistory();
 
-    expect(history).to.deep.equal([{ turn: computerName, x: 0, y: 0 }]);
+    expect(history).to.deep.equal([{ turn: computerName, x: 1, y: 1 }]);
+    stub.restore();
   });
 
   it("Game save 1 user's move and 1 computer's move in history", () => {
