@@ -1,4 +1,5 @@
 import { expect } from "chai";
+import sinon from "sinon";
 import Game from "../src/Game";
 
 const computerName = "computer";
@@ -72,21 +73,21 @@ describe("Game", () => {
     game.createComputerMove();
     const history = game.getMoveHistory();
 
-    expect(history.length).to.equal(2)
-    expect(history[0].turn).to.equal(userName)
-    expect(history[1].turn).to.equal(computerName)
+    expect(history.length).to.equal(2);
+    expect(history[0].turn).to.equal(userName);
+    expect(history[1].turn).to.equal(computerName);
   });
 
   it("Computer move in randomly chosen cell", () => {
-    const userMoveSymbol = "x"
-    const computerMoveSymbol = "o"
+    const userMoveSymbol = "x";
+    const computerMoveSymbol = "o";
 
-    const stub = sinon.stub(Math, 'random').returnValues(0.5)
+    const stub = sinon.stub(Math, "random").returnValues(0.5);
 
-    game.createComputerMove()
-    const board = game.getState()
+    game.createComputerMove();
+    const board = game.getState();
 
-    expect(board[1][1]).to.equal(computerMoveSymbol)
-    stub.restore()
-  })
+    expect(board[1][1]).to.equal(computerMoveSymbol);
+    stub.restore();
+  });
 });
